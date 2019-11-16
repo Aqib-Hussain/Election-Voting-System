@@ -3,4 +3,4 @@ project(Coursework_Aqib_Hussain)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Coursework_Aqib_Hussain main.cpp Vote.h Vote.cpp)
+add_executable(Coursework_Aqib_Hussain main.cpp Vote.h Vote.cpp Election.cpp Election.h)
