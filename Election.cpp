@@ -6,9 +6,9 @@
 #include "Vote.h"
 
 void add_vote(candidate prefs){
-    //pushback to add
+    //voteNums.pushback
 }
 
-int vote_count() {
-    //return number of votes
+int Election::vote_count() const {
+    return voteNums[voteNums.cbegin(), voteNums.cend()];
 }

@@ -10,9 +10,11 @@
 #include <algorithm>
 #include "Vote.h"
 
+typedef int numberOfVotes;
+
 class Election {
 
-
+    std::vector<numberOfVotes> voteNums; //create a vector to store the number of votes
 
 public:
     void add_vote(const Vote &v);
