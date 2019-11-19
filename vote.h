@@ -9,12 +9,12 @@
 
 typedef unsigned int candidate;
 
-class Vote {
+class vote {
 
-    std::vector<candidate> prefs;
+    std::vector<candidate> prefs; //the total votes from EACH voter to EACH candidate
 
 public:
-    Vote(const std::vector<candidate> &prefs);
+    vote(const std::vector<candidate> &prefs);
 
     bool spent() const;
 

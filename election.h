@@ -8,24 +8,24 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include "Vote.h"
+#include "vote.h"
 
-typedef int numberOfVotes;
 
-class Election {
+class election {
 
-    std::vector<numberOfVotes> voteNums; //create a vector to store the number of votes
+    std::vector<vote> votes; //a list of the total votes from ALL voters
 
 public:
-    void add_vote(const Vote &v);
+
+    void add_vote(const vote &v);
 
     int vote_count() const;
 
     void eliminate(candidate c);
 
-    std::vector<std::pair<candidate, int>> ranked_candidates() const;
+    std::vector<std::pair<candidate, int>> ranked_candidates() const; //
 
-    Election read_votes(std::istream &in);
+    election read_votes(std::istream &in);
 
 };
 
