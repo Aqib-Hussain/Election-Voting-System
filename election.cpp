@@ -18,10 +18,10 @@ void election::eliminate(candidate c){
     for(vote &vote: votes){
         vote.discard(c);
     }
-    std::remove_if(votes.begin(),votes.end(),
+    votes.erase(std::remove_if(votes.begin(),votes.end(),
             [] (vote &vote) {
                 return vote.spent();
-    });
+    }), votes.end());
 }
 
 std::vector<std::pair<candidate, int>> election::ranked_candidates() const{
@@ -42,9 +42,32 @@ std::vector<std::pair<candidate, int>> election::ranked_candidates() const{
             pairs.emplace_back(vote.first_preference(), 1);
         }
     }
+    //sort the pairs by number of votes
+    std::sort(pairs.begin(),pairs.end(),
+            [](std::pair<candidate,int> pair1,std::pair<candidate,int> pair2) { return pair2.second < pair1.second;} );
     return pairs;
 }
 
 election read_votes(std::istream &in){
-   // return;
+    std::string line;
+    candidate cand;
+    election elec;
+
+    //read in the input of first line into line
+    while (std::getline(in, line)) {
+        std::stringstream storedLine(line);
+        std::vector<candidate> prefs;
+        //while the candidate is the same as stored line
+            while(storedLine >> cand){
+                prefs.push_back(cand);
+            }
+            //add preference to vote and then add vote to election making sure the line is not empty
+            if(!prefs.empty()) {
+                vote vot(prefs);
+                elec.add_vote(vot);
+            }
+    }
+    return elec;
 }
+
+

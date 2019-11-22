@@ -25,9 +25,8 @@ public:
 
     std::vector<std::pair<candidate, int>> ranked_candidates() const; //
 
-    election read_votes(std::istream &in);
-
 };
 
+election read_votes(std::istream &in);
 
 #endif //COURSEWORK_AQIB_HUSSAIN_ELECTION_H
